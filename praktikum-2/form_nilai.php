@@ -7,7 +7,7 @@
 <body style="margin: 50px 50px 50px 50px;">
     <h3>Form Nilai Siswa</h3>
     <br>
-<form method="GET" action="form_nilai.php">
+<form class="form-horizontal" method="POST" action="nilai_siswa.php">
   <div class="form-group row">
     <label for="nama" class="col-4 col-form-label">Nama Lengkap</label> 
     <div class="col-8">
@@ -48,20 +48,5 @@
     </div>
   </div>
 </form>
-<?php
-$proses = $_GET['proses'];
-$nama_siswa = $_GET['nama'];
-$mata_kuliah = $_GET['matkul'];
-$nilai_uts = $_GET['nilai_uts'];
-$nilai_uas = $_GET['nilai_uas'];
-$nilai_tugas = $_GET['nilai_tugas'];
-
-    echo 'Proses : ' .$proses;
-    echo '<br>Nama Siswa : ' .$nama_siswa;
-    echo '<br>Mata Kuliah : ' .$mata_kuliah;
-    echo '<br>Nilai UTS : ' .$nilai_uts;
-    echo '<br>Nilai UAS : ' .$nilai_uas;
-    echo '<br>Nilai Tugas/Praktikum : ' .$nilai_tugas;
-?>
 </body>
 </html>
