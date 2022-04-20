@@ -4,6 +4,8 @@
 <head>
     <title>Mahasiswa</title>
 
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
@@ -12,20 +14,19 @@
 
     <!-- LINK FONT -->
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-</head>
 
+</head>
 <style>
-    * {
-        font-family: "Lucida Console", Monaco, monospace;
+    body {
+        margin:  10px 10px 10px 10px;
     }
 </style>
-
 <body>
     <div class="row">
         <div class="col-12">
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <div class="container-fluid">
-                    <a class="navbar-brand" href="#">WEB PENILAIAN</a>
+                    <a style="color: grey; font-weight: bold;" class="navbar-brand" href="#">WEB 02</a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
@@ -57,6 +58,7 @@
                                     <li><a class="dropdown-item" href="#">Something else here</a></li>
                                 </ul>
                             </li>
+
                             <form class="d-flex">
                                 <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                                 <button class="btn btn-outline-primary" type="submit">Submit</button>
@@ -84,102 +86,73 @@
             </nav>
         </div>
     </div>
-    <div class="row pt-2 px-3">
-        <div class="col-9">
-            <span><b>Show</b></span>
-            <div class="btn-group">
-                <button class="btn btn-none dropdown-toggle" type="button" id="defaultDropdown" data-bs-toggle="dropdown" data-bs-auto-close="true" aria-expanded="false">
-                    10
-                </button>
-                <ul class="dropdown-menu" aria-labelledby="defaultDropdown">
-                    <li><a class="dropdown-item" href="#">1</a></li>
-                    <li><a class="dropdown-item" href="#">2</a></li>
-                    <li><a class="dropdown-item" href="#">3</a></li>
-                    <li><a class="dropdown-item" href="#">10</a></li>
-                </ul>
-            </div>
-            <span><b>Entries</b></span>
-        </div>
-        <div class="col-3">
-            <div class="float-end input-group">
-                <label for="colFormLabelSm" class="col-sm-3 col-form-label col-form-label-sm">Search : </label>
-                <div class="col-sm-9">
-                    <input type="search" class="form-control form-control-sm" id="colFormLabelSm" placeholder="Search">
+
+    <div class="row pt-2">
+
+        <div class="col-12">
+            <h3 class="mt-1 ms-4">Form Nilai Ujian</h3>
+            <hr>
+            <form method="POST" action="data_nilaimahasiswa.php">
+                <div class="form-group row">
+                    <label for="nama" class="col-4 col-form-label text-right">NIM</label>
+                    <div class="col-3">
+                        <input id="nim" name="nim" placeholder="NIM" type="number" class="form-control">
+                    </div>
                 </div>
-            </div>
-        </div>
-    </div>
-    <div class="row pt-2 px-4">
-        <?php
-        require_once 'class_mahasiswa.php';
+                <div class="form-group row">
+                    <label for="select" class="col-4 col-form-label text-right">Mata Kuliah</label>
+                    <div class="col-8">
+                        <select id="select" name="matkul" class="custom-select">
+                            <option value="Komunikasi Efektif">Komunikasi Efektif</option>
+                            <option value="Jaringan Komputer">Jaringan Komputer</option>
+                            <option value="UI/UX">UI/UX</option>
+                            <option value="Pemrograman Web 2">Pemrograman Web 2</option>
+                            <option value="Basis Data">Basis Data</option>
+                            <option value="PPKn">PPKn</option>
+                            <option value="Statistik dan Probabilitas">Statistik dan Probabilitas</option>
+                            <option value="B. Inggris">B. Inggris</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="number" class="col-4 col-form-label text-right">Nilai Ujian Anda</label>
+                    <div class="col-3">
+                        <input id="number" name="nilai" placeholder="Nilai Ujian" type="number" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="offset-4 col-8">
+                        <input type="submit" value="Simpan" name="proses" class="btn-success px-3 py-1 rounded">
+                    </div>
+                </div>
+            </form>
+            <?php
+            require_once 'class_nilaimahasiswa.php';
+            echo '<hr><div class="ms-4">';
+            $proses = $_POST['proses'];
+            $nim = $_POST['nim'];
+            $matkul = $_POST['matkul'];
+            $nilai = $_POST['nilai'];
 
-        $m1 = new Mahasiswa("02011", "Faiz Fikri", "TI", 2012, 3.8);
-        $m2 = new Mahasiswa("02012", "Alissa Khairunnisa", "TI", 2012, 3.9);
-        $m3 = new Mahasiswa("01011", "Rosalie Naurah", "SI", 2010, 3.46);
-        $m4 = new Mahasiswa("01012", "Defghi Muhammad", "SI", 2010, 3.2);
-        $arm = [$m1, $m2, $m3, $m4];
-        ?>
-
-        <table class="table table-striped table-hover table-bordered">
-            <thead>
-                <tr>
-                    <th class="p-2">No</th>
-                    <th class="p-2">NIM</th>
-                    <th class="p-2">Nama</th>
-                    <th class="p-2">Prodi</th>
-                    <th class="p-2">Alumni Tahun</th>
-                    <th class="p-2">IPK</th>
-                    <th class="p-2">Predikat</th>
-                    <th class="p-2">View | Edit</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
-                $nomer = 1;
-                foreach ($arm as $datam) {
-
-                    echo
-                    '<tr>
-                        <td class="p-2">' . $nomer . '</td>
-                        <td class="p-2">' . $datam->nim . '</td>
-                        <td class="p-2">' . $datam->nama . '</td>
-                        <td class="p-2">' . $datam->prodi . '</td>
-                        <td class="p-2">' . $datam->thn_angkatan . '</td>
-                        <td class="p-2">' . $datam->ipk . '</td>
-                        <td class="p-2">' . $datam->predikat_ipk() . '</td>
-                        <td class="p-2">' . '<a href="#"><i class="bi bi-eye pe-5"></i></a> <a href="#"><i class="bi bi-pencil"></i></a>' . ' </td>
-                    </tr>';
-                    $nomer++;
-                }
-                ?>
-            </tbody>
-        </table>
-    </div>
-    <div class="row px-3">
-        <div class="col-6">
-            <p>Showing 1 to 4 for 4 entries</p>
-        </div>
-        <div class="col-6">
-            <nav aria-label="Page navigation example">
-                <ul class="pagination float-end">
-                    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                </ul>
-            </nav>
+            if (!empty($proses)) {
+                $m1 = new NilaiMahasiswa($matkul, $nilai, $nim);
+                $m1->dataMahasiswa();
+                echo '<br>Hasil Ujian : ' . $m1->grade();
+                echo '<br>Grade : ' . $m1->hasil();
+                echo '</div>';
+            }
+            ?>
         </div>
     </div>
     <hr>
     <div class="row">
         <div class="col-12">
             <div class="px-3">
-                <p class="mt-4 mb-0"><b>Lab Pemrograwan Web Lanjutan</b></p>
+                <p class="my-0"><b>Lab Pemrograwan Web Lanjutan</b></p>
                 <p class="mb-0">Dosen Sirojul Munir S.Si, M.Kom</p>
                 <p class="mb-0">STT-NF Kampus B</p>
             </div>
         </div>
     </div>
-
 </body>
-
 </html>
