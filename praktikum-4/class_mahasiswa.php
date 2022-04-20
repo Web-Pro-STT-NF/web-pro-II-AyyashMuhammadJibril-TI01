@@ -6,10 +6,13 @@ class Mahasiswa {
     var $prodi;
     var $ipk;
     
-    function __construct($nim,$nama)
+    function __construct($_nim, $_nama, $_prodi, $_tahun_angkatan, $_ipk)
     {
-        $this->nim = $nim;
-        $this->nama = $nama;
+        $this->nim = $_nim;
+        $this->nama = $_nama;
+        $this->prodi = $_prodi;
+        $this->thn_angkatan = $_tahun_angkatan;
+        $this->ipk = $_ipk;
     }
     function predikat_ipk()
     {
