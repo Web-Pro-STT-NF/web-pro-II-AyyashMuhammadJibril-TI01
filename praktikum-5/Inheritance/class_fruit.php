@@ -2,7 +2,7 @@
 
 use Fruit as GlobalFruit;
 
-class Fruit {
+class Fruity {
     public $name;
     public $color;
 
@@ -17,7 +17,7 @@ class Fruit {
 }
 
 // Strawberry is inherited from Fruit
-class Strawberry extends Fruit {
+class Strawberry extends Fruity {
     public function message() {
         echo "Am i a fruit or a berry?";
     }
