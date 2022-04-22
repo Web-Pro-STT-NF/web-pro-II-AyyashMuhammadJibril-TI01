@@ -4,15 +4,13 @@ class Dispenser{
     protected $hargaSegelas = 2000;
     private $volumeGelas = 250;
     private $jumlahPembelian = 1; // min transaction
-    public $namaMinuman = "Air putih";
+    public $namaMinuman = "Lemonade";
     private static $totalPenjualan = 0;
     protected static $nomorPembeli = 0;
 
-    public function __construct($jumlahPembelian, $namaMinuman) // init construct
+    public function __construct($jumlahPembelian) // init construct
     {
-        $this->namaMinuman = $namaMinuman;
         $this->jumlahPembelian = $jumlahPembelian;
-
         self::$volume -= ($this->volumeGelas * $jumlahPembelian);
         self::$totalPenjualan += ($this->hargaSegelas * $jumlahPembelian );
         self::$nomorPembeli += 1;
@@ -41,6 +39,7 @@ class Dispenser{
     public function summary() {
 
         return "Pembeli " . number_format(self::$nomorPembeli) . "<br>
+        Dispenser berisi minuman: " . $this->namaMinuman . "<br>
         Pembelian volume air sebanyak: " . number_format($this->volumeGelas * $this->jumlahPembelian) . " ml. <br>
         Total penghasilan yang didapatkan: Rp. " . $this->infoPenjualan() . "<br>
         Sisa air saat ini: " . number_format($this->getIsi()) . " ml.";

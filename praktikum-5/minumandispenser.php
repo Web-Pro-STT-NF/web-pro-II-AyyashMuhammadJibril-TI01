@@ -1,15 +1,15 @@
 <?php
 require_once 'class_dispenser.php';
 
-$pembeli1 = new Dispenser(4, "Air putih");
+$pembeli1 = new Dispenser(4);
 echo $pembeli1-> summary();
 echo "<br>";
 echo "<br>";
-$pembeli2 = new Dispenser(7, "Air Putih");
+$pembeli2 = new Dispenser(7);
 echo $pembeli2-> summary();
 echo "<br>";
 echo "<br>";
-$pembeli3 = new Dispenser(3, "Air Putih");
+$pembeli3 = new Dispenser(3);
 echo $pembeli3-> summary();
 echo "<br>";
 echo "<br>";
